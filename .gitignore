@@ -1,0 +1,17 @@
+# Android
+*.iml
+.gradle/
+/local.properties
+/.idea/
+.DS_Store
+/build/
+/app/build/
+/app/release/
+*.apk
+*.aab
+*.ap_
+*.dex
+# 863MB local training corpus — kept on local disk only, not in git
+jarvis-corpus-200x.jsonl
+# stale duplicate source tree
+/unused_backup/
