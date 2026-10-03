@@ -1,11 +1,11 @@
-package com.jarvis.assistant.utils
+package com.mweshimiwa.assistant.utils
 
 import android.content.Context
 import android.content.SharedPreferences
 
 object SharedPrefsUtils {
 
-    private const val DEFAULT_PREFS_NAME = "jarvis_assistant_prefs"
+    private const val DEFAULT_PREFS_NAME = "mweshimiwa_assistant_prefs"
 
     fun getPrefs(context: Context, name: String = DEFAULT_PREFS_NAME): SharedPreferences {
         return context.getSharedPreferences(name, Context.MODE_PRIVATE)

@@ -1,4 +1,4 @@
-package com.jarvis.assistant.utils
+package com.mweshimiwa.assistant.utils
 
 import android.content.ContentValues
 import android.content.Context

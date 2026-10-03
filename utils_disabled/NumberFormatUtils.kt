@@ -1,4 +1,4 @@
-package com.jarvis.assistant.utils
+package com.mweshimiwa.assistant.utils
 
 import java.math.BigDecimal
 import java.math.MathContext

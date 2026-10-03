@@ -1,4 +1,4 @@
-package com.jarvis.assistant.utils
+package com.mweshimiwa.assistant.utils
 
 import android.net.Uri
 import java.net.URL

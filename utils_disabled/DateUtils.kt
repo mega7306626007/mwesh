@@ -1,4 +1,4 @@
-package com.jarvis.assistant.utils
+package com.mweshimiwa.assistant.utils
 
 import java.text.SimpleDateFormat
 import java.util.Calendar

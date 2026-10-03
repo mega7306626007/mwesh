@@ -1,6 +1,6 @@
-# Jarvis full training — run on Colab GPU (A100/T4). No APIs, your data only.
+# Mweshimiwa full training — run on Colab GPU (A100/T4). No APIs, your data only.
 # Steps in Colab:
-#   1. Upload jarvis-corpus.jsonl (from jarvis-train folder) to /content/
+#   1. Upload mweshimiwa-corpus.jsonl (from mweshimiwa-train folder) to /content/
 #   2. !pip install torch --index-url https://download.pytorch.org/whl/cu121
 #   3. Run this file: !python colab_train_full.py
 import json, os, re, collections, random
@@ -9,8 +9,8 @@ import torch.nn as nn
 from torch.utils.data import Dataset, DataLoader
 from torch.cuda.amp import autocast, GradScaler
 
-CORPUS = "/content/jarvis-corpus.jsonl"   # upload your file here
-OUT = "/content/jarvis-custom-v1-full"
+CORPUS = "/content/mweshimiwa-corpus.jsonl"   # upload your file here
+OUT = "/content/mweshimiwa-custom-v1-full"
 os.makedirs(OUT, exist_ok=True)
 random.seed(7)
 
@@ -18,7 +18,7 @@ assert torch.cuda.is_available(), "Enable GPU in Colab: Runtime > Change runtime
 print("GPU:", torch.cuda.get_device_name(0))
 
 def tok_words(s):
-    return re.findall(r"<user>|<jarvis>|[\w']+|[.,!?;:]", s.lower())
+    return re.findall(r"<user>|<mweshimiwa>|[\w']+|[.,!?;:]", s.lower())
 
 texts = [json.loads(l)["text"] for l in open(CORPUS, encoding="utf-8") if l.strip()]
 random.shuffle(texts)
@@ -51,7 +51,7 @@ class DS(Dataset):
     def __len__(self): return len(data)
     def __getitem__(self, i): return data[i]
 
-class JarvisGPT(nn.Module):
+class MweshimiwaGPT(nn.Module):
     def __init__(self, v):
         super().__init__()
         self.tok = nn.Embedding(v, D)
@@ -70,7 +70,7 @@ class JarvisGPT(nn.Module):
 
 device = torch.device("cuda")
 torch.manual_seed(7)
-model = JarvisGPT(len(stoi)).to(device)
+model = MweshimiwaGPT(len(stoi)).to(device)
 print(f"params={sum(p.numel() for p in model.parameters())/1e6:.1f}M")
 loader = DataLoader(DS(), batch_size=64, shuffle=True, num_workers=2, pin_memory=True)
 opt = torch.optim.AdamW(model.parameters(), lr=4e-4, weight_decay=0.01)
@@ -110,4 +110,4 @@ torch.onnx.export(model, dummy, os.path.join(OUT, "model.onnx"),
                   opset_version=18, dynamo=False)
 print("saved pytorch_model.bin + model.onnx + vocab.json")
 print("Next: convert to GGUF for smaller phone size if wanted:")
-print("  python llama.cpp/convert-hf-to-gguf.py . --outfile jarvis-custom-v1-q4_0.gguf")
+print("  python llama.cpp/convert-hf-to-gguf.py . --outfile mweshimiwa-custom-v1-q4_0.gguf")

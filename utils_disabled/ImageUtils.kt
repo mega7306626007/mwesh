@@ -1,4 +1,4 @@
-package com.jarvis.assistant.utils
+package com.mweshimiwa.assistant.utils
 
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
@@ -1957,7 +1957,7 @@ object ImageUtils {
         return output
     }
 
-    fun getImageJarvisJudiceNinke(bitmap: Bitmap): Bitmap {
+    fun getImageMweshimiwaJudiceNinke(bitmap: Bitmap): Bitmap {
         val width = bitmap.width
         val height = bitmap.height
         val output = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888)

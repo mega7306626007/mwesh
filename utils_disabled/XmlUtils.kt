@@ -1,4 +1,4 @@
-package com.jarvis.assistant.utils
+package com.mweshimiwa.assistant.utils
 
 import org.w3c.dom.Document
 import org.w3c.dom.Element

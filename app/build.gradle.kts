@@ -5,11 +5,11 @@ plugins {
 }
 
 android {
-    namespace = "com.jarvis.assistant"
+    namespace = "com.mweshimiwa.assistant"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.jarvis.assistant"
+        applicationId = "com.mweshimiwa.assistant"
         minSdk = 26
         targetSdk = 34
         versionCode = 1
@@ -83,7 +83,7 @@ dependencies {
 
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3")
 
-    // On-device inference for your own Jarvis LLM (no cloud APIs)
+    // On-device inference for your own Mweshimiwa LLM (no cloud APIs)
     implementation("com.microsoft.onnxruntime:onnxruntime-android:1.18.0")
 
     // Restored features: background sync worker + biometric lock
