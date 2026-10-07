@@ -15,3 +15,8 @@
 mweshimiwa-corpus-200x.jsonl
 # stale duplicate source tree
 /unused_backup/
+
+# training runtime (checkpoints are GBs; corpora/scripts ARE committed)
+__pycache__/
+train/huge-v3/
+*.bin
