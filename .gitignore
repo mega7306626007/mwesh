@@ -20,3 +20,4 @@ mweshimiwa-corpus-200x.jsonl
 __pycache__/
 train/huge-v3/
 *.bin
+train/*.log
